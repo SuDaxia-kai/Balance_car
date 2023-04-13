@@ -25,10 +25,11 @@ balance_car\speed_ctrl.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_
 balance_car\speed_ctrl.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
 balance_car\speed_ctrl.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 balance_car\speed_ctrl.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
+balance_car\speed_ctrl.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h
 balance_car\speed_ctrl.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 balance_car\speed_ctrl.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 balance_car\speed_ctrl.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 balance_car\speed_ctrl.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 balance_car\speed_ctrl.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-balance_car\speed_ctrl.o: ..\controller\tim_it.h
-balance_car\speed_ctrl.o: ..\algorithm\pid.h
+balance_car\speed_ctrl.o: ../controller/tim_it.h
+balance_car\speed_ctrl.o: ../algorithm/pid.h

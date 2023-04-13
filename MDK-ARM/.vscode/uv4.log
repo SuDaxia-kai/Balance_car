@@ -1,0 +1,29 @@
+*** Using Compiler 'V5.06 update 1 (build 61)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'Balance_car'
+compiling tim_it.c...
+..\controller\tim_it.c(44): error:  #167: argument of type "struct PID_param *" is incompatible with parameter of type "PPidPtr"
+  		incremental_PID(&motor_A, &motor_pid_param);
+..\controller\tim_it.c(45): error:  #167: argument of type "struct PID_param *" is incompatible with parameter of type "PPidPtr"
+  		incremental_PID(&motor_B, &motor_pid_param);
+..\controller\tim_it.c: 0 warnings, 2 errors
+compiling pid.c...
+..\algorithm\pid.c(26): error:  #136: struct "P_pid_obj" has no field "outputMax"
+  	if (motor->output > pid->outputMax || motor->measure > pid->actualMax)
+..\algorithm\pid.c(26): error:  #136: struct "P_pid_obj" has no field "actualMax"
+  	if (motor->output > pid->outputMax || motor->measure > pid->actualMax)
+..\algorithm\pid.c(31): error:  #136: struct "P_pid_obj" has no field "outputMax"
+  	else if (motor->output < -pid->outputMax || motor->measure < -pid->actualMax)
+..\algorithm\pid.c(31): error:  #136: struct "P_pid_obj" has no field "actualMax"
+  	else if (motor->output < -pid->outputMax || motor->measure < -pid->actualMax)
+..\algorithm\pid.c(43): error:  #136: struct "P_pid_obj" has no field "kp"
+  	motor->output += pid->kp*proportion + pid->ki*integral + pid->kd*differential;
+..\algorithm\pid.c(43): error:  #136: struct "P_pid_obj" has no field "ki"
+  	motor->output += pid->kp*proportion + pid->ki*integral + pid->kd*differential;
+..\algorithm\pid.c(43): error:  #136: struct "P_pid_obj" has no field "kd"
+  	motor->output += pid->kp*proportion + pid->ki*integral + pid->kd*differential;
+..\algorithm\pid.c: 0 warnings, 7 errors
+compiling main.c...
+compiling speed_ctrl.c...
+"Balance_car\Balance_car.axf" - 9 Error(s), 0 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:01

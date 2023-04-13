@@ -2,6 +2,7 @@
 #include "bsp_motor.h"
 #include "stdio.h"
 
+
 struct I_pid_obj motor_A = {0,0,0,0,0,0};
 struct I_pid_obj motor_B = {0,0,0,0,0,0};
 struct PID_param motor_pid_param;
@@ -10,9 +11,10 @@ struct P_pid_obj gyroT_pid = {0,0,0,0,0,0};
 struct P_pid_obj gyroG_pid = {0,0,0,0,0,0};
 struct PID_param gyroT_pid_param, gyroG_pid_param;
 
-//增量式PID
-//带抗积分饱和
-void incremental_PID (struct I_pid_obj *motor, struct PID_param *pid)
+/**
+*@brief 
+*/
+void incremental_PID (IPidPtr motor, PidPtr pid)
 {
 	float proportion = 0, integral = 0, differential = 0;
 	
@@ -53,6 +55,7 @@ float positional_PID (struct P_pid_obj *obj, struct PID_param *pid)
 	
 	obj->bias = obj->target - obj->measure;
 	
+	// 积分遇限削弱法
 	if (obj->output >= pid->outputMax)
 	{
 		if (obj->bias < 0)

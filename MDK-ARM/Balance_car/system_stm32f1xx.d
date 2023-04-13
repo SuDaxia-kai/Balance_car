@@ -23,6 +23,7 @@ balance_car\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ha
 balance_car\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
 balance_car\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 balance_car\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
+balance_car\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h
 balance_car\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 balance_car\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 balance_car\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h

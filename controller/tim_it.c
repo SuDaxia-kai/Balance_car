@@ -4,13 +4,8 @@
 #include "tim.h"
 #include "pid.h"
 #include "bsp_motor.h"
-#include "bsp_led.h"
 #include "speed_ctrl.h"
-#include "scaner.h"
 #include "sin_generate.h"
-#include "bsp_linefollower.h"
-#include "bsp_QRscan.h"
-#include "turn.h"
 
 #define PI  3.1415926535
 
@@ -34,7 +29,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			// 
 			printf("A的速度是 %d, B的速度是 %d \r\n", motor_A.measure, motor_B.measure);
 			
-			//三个轮子编码器读取的脉冲数量的总值
+			//两个轮子编码器读取的脉冲数量的总值
 			motor_all.encoder_avg = motor_A.measure + motor_B.measure;
 			
 			// 根据脉冲总数来计算机器人当前的pitch角

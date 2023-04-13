@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "dma.h"
+#include "i2c.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -27,6 +28,7 @@
 /* USER CODE BEGIN Includes */
 #include "bsp_motor.h"
 #include "pid.h"
+#include "imu.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -95,11 +97,16 @@ int main(void)
   MX_TIM4_Init();
   MX_TIM6_Init();
   MX_USART3_UART_Init();
-	
+  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
 	motor_pwm_enable();
 	pid_init();
 	HAL_TIM_Base_Start_IT(&htim6);
+	imu_init();
+	
+	// У׼IMU
+	CalibrationAcc();
+	CalibrationGyro();
   /* USER CODE END 2 */
 
   /* Infinite loop */

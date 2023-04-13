@@ -6,11 +6,6 @@ volatile struct Motors motor_all = {
 	.Aspeed = 0,
 	.Bspeed = 0,
 	.encoder_avg = 0,
-	.GyroG_speedMax = 50,
-	.GyroT_speedMax = 80,
-	.Cincrement = 1.5,	//循迹加速度
-	.Gincrement = 1.5,		//非循迹加速度
-	
 	.is_UP = false,
 	.is_DOWM = false,
 };
