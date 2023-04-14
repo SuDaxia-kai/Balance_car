@@ -81,7 +81,7 @@ void get_imu_data()
 	gyroRawData.y = gyroRawData.y - Gyro_Offset.y;
 	gyroRawData.z = gyroRawData.z - Gyro_Offset.z;
 	//printf("{ACC_z:%d,%d,%d}\n\r",accRawData.x,accRawData.y,accRawData.z);
-	//printf("{Gyro:%d,%d,%d}\n\r",gyroRawData.x,gyroRawData.y,gyroRawData.z);
+//	printf("{Gyro:%d,%d,%d}\n\r",gyroRawData.x,gyroRawData.y,gyroRawData.z);
 	
 	//ÍÓÂÝÒÇÊý¾ÝµÍÍ¨ÂË²¨
 	gyroDataFilter.x = Butterworth_Filter(gyroRawData.x, &Gyro_BufferData[0], &Gyro_Parameter);
@@ -92,7 +92,7 @@ void get_imu_data()
 	accDataFilter.x = Butterworth_Filter(accRawData.x, &Accel_BufferData[0], &Accel_Parameter);
 	accDataFilter.y = Butterworth_Filter(accRawData.y, &Accel_BufferData[1], &Accel_Parameter);
 	accDataFilter.z = Butterworth_Filter(accRawData.z, &Accel_BufferData[2], &Accel_Parameter);
-	
+	printf("{GYRO:%d,%d,%d}\n\r",gyroDataFilter.x,gyroDataFilter.y,gyroDataFilter.z);
 	//printf("{ACC_z:%d,%d,%d}\n\r",accDataFilter.x,accDataFilter.y,accDataFilter.z);
 	//ÍÓÂÝÒÇ½ÃÕýÊý¾Ý²»ÂË²¨
   gyroCorrectFilter.x = gyroRawData.x;
@@ -133,7 +133,7 @@ void CalibrationAcc()
 		acce_sample_sum.x += accRawData.x;
 		acce_sample_sum.y += accRawData.y;
 		acce_sample_sum.z += (accRawData.z-4096);
-		printf("acce_sample_sum:%d,%d,%d\n\r",acce_sample_sum.x,acce_sample_sum.y,acce_sample_sum.z);
+//		printf("acce_sample_sum:%d,%d,%d\n\r",acce_sample_sum.x,acce_sample_sum.y,acce_sample_sum.z);
 		HAL_Delay(5);
 	}
 	
@@ -141,7 +141,7 @@ void CalibrationAcc()
 	Acc_Offset.y = acce_sample_sum.y / num_samples;
 	Acc_Offset.z = acce_sample_sum.z / num_samples;
 	
-	printf("Acc_RawData_Offset:%d,%d,%d\n\r",Acc_Offset.x,Acc_Offset.y,Acc_Offset.z);
+//	printf("Acc_RawData_Offset:%d,%d,%d\n\r",Acc_Offset.x,Acc_Offset.y,Acc_Offset.z);
 	printf("Acc Calibration Stop\n\r");
 }
 
@@ -162,7 +162,7 @@ void CalibrationGyro()
 		gtro_sample_sum.x += gyroRawData.x;
 		gtro_sample_sum.y += gyroRawData.y;
 		gtro_sample_sum.z += gyroRawData.z;
-		printf("acce_sample_sum:%d,%d,%d\n\r",gtro_sample_sum.x,gtro_sample_sum.y,gtro_sample_sum.z);
+//		printf("acce_sample_sum:%d,%d,%d\n\r",gtro_sample_sum.x,gtro_sample_sum.y,gtro_sample_sum.z);
 		HAL_Delay(5);
 	}
 	
@@ -170,7 +170,7 @@ void CalibrationGyro()
 	Gyro_Offset.y = gtro_sample_sum.y / num_samples;
 	Gyro_Offset.z = gtro_sample_sum.z / num_samples;
 	
-	printf("Gyro_RawData_Offset:%d,%d,%d\n\r",Gyro_Offset.x,Gyro_Offset.y,Gyro_Offset.z);
+//	printf("Gyro_RawData_Offset:%d,%d,%d\n\r",Gyro_Offset.x,Gyro_Offset.y,Gyro_Offset.z);
 	printf("Gyro Calibration Stop\n\r");
 }
 

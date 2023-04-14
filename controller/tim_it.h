@@ -12,12 +12,9 @@ enum PID_Mode {
 };
 
 extern uint32_t const *TIM6_tick;
-
+extern volatile uint32_t TIME_ISR_CNT;
 void pid_mode_switch(uint8_t target_mode);
 
-//µ÷ÊÔº¯ÊýÇø/////////////////////////////////////////////
-void usmart_turn_angle(int set);
-/////////////////////////////////////////////////////////
 
 #endif
 

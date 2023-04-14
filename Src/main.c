@@ -29,6 +29,7 @@
 #include "bsp_motor.h"
 #include "pid.h"
 #include "imu.h"
+#include "ahrs.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -101,12 +102,14 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	motor_pwm_enable();
 	pid_init();
-	HAL_TIM_Base_Start_IT(&htim6);
 	imu_init();
 	
-	// У׼IMU
+	//IMU
 	CalibrationAcc();
 	CalibrationGyro();
+	ahrs_init();
+	HAL_TIM_Base_Start_IT(&htim6);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -114,7 +117,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+			
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

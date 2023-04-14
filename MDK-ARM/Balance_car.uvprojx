@@ -658,6 +658,11 @@
               <FileType>1</FileType>
               <FilePath>..\application\mpu6050.c</FilePath>
             </File>
+            <File>
+              <FileName>time_cnt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\application\time_cnt.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -677,6 +682,11 @@
               <FileName>Filter.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\algorithm\Filter.c</FilePath>
+            </File>
+            <File>
+              <FileName>ahrs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\algorithm\ahrs.c</FilePath>
             </File>
           </Files>
         </Group>

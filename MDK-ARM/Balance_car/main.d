@@ -40,3 +40,4 @@ balance_car\main.o: ../algorithm/pid.h
 balance_car\main.o: ../application/imu.h
 balance_car\main.o: ../algorithm/vector3.h
 balance_car\main.o: ../application/mpu6050.h
+balance_car\main.o: ../algorithm/ahrs.h
