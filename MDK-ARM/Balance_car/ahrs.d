@@ -1,6 +1,7 @@
 balance_car\ahrs.o: ..\algorithm\ahrs.c
 balance_car\ahrs.o: ..\algorithm\ahrs.h
 balance_car\ahrs.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+balance_car\ahrs.o: ..\algorithm\vector3.h
 balance_car\ahrs.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 balance_car\ahrs.o: ../application/time_cnt.h
 balance_car\ahrs.o: ../Inc/tim.h
@@ -35,7 +36,6 @@ balance_car\ahrs.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 balance_car\ahrs.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 balance_car\ahrs.o: ../Inc/usart.h
 balance_car\ahrs.o: ../application/imu.h
-balance_car\ahrs.o: ../algorithm/vector3.h
 balance_car\ahrs.o: ../application/mpu6050.h
 balance_car\ahrs.o: ..\algorithm\Filter.h
 balance_car\ahrs.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

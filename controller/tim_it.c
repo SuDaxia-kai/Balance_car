@@ -23,16 +23,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     if (htim == (&htim6))
     {
 			++tim6_tick;
-		
-		//周期10ms
-		if (*TIM6_tick % 2 == 0)
-		{
 			// 每过10ms，计数+1
 			TIME_ISR_CNT++;
 		  // 更新姿态
 			get_imu_data();
 			ahrs_update();
-			
+		//周期10ms
+		if (*TIM6_tick % 2 == 0)
+		{
+
 			
 			motor_A.measure = read_encoder(2);
 			motor_B.measure = read_encoder(3);
@@ -54,8 +53,26 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		incremental_PID(&motor_A, &motor_pid_param);
 		incremental_PID(&motor_B, &motor_pid_param);
 		
-		motor_set_pwm(1, (int32_t)motor_A.output);
-		motor_set_pwm(2, (int32_t)motor_B.output);
+		/* 
+		直立环
+		计算加速度 acc = kp * \theta + kd * \dot{\theta}
+		根据simulink可得系数 kp = 200, kd = 8;
+		*/
+		int acc = 0;
+		acc += 200 * (int)Pitch + 8 * this_gyro.x;
+		if(Pitch > 60) // 此时机体已经失控了
+		{
+				motor_set_pwm(1, 0);
+				motor_set_pwm(2, 0);
+		}
+		else
+		{
+				motor_set_pwm(1, acc);
+				motor_set_pwm(2, -acc);
+		}
+
+//		motor_set_pwm(1, (int32_t)motor_A.output);
+//		motor_set_pwm(2, (int32_t)motor_B.output);
 			
     }
 }

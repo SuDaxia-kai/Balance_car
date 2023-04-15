@@ -1,6 +1,6 @@
 Dependencies for Project 'Balance_car', Target 'Balance_car': (DO NOT MODIFY !)
 F (startup_stm32f103xe.s)(0x6437F28D)(--cpu Cortex-M3 -g --apcs=interwork -I.\RTE\_Balance_car-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include--pd "__UVISION_VERSION SETA 525" --pd "_RTE_ SETA 1" --pd "STM32F10X_HD SETA 1"--list startup_stm32f103xe.lst --xref -o balance_car\startup_stm32f103xe.o --depend balance_car\startup_stm32f103xe.d)
-F (../Src/main.c)(0x6438C695)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../application -I ../boards -I ../controller -I ../algorithm-I.\RTE\_Balance_car-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o balance_car\main.o --omf_browse balance_car\main.crf --depend balance_car\main.d)
+F (../Src/main.c)(0x643AA87B)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../application -I ../boards -I ../controller -I ../algorithm-I.\RTE\_Balance_car-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o balance_car\main.o --omf_browse balance_car\main.crf --depend balance_car\main.d)
 I (../Inc/main.h)(0x6436B531)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x62D8B8B5)
 I (../Inc/stm32f1xx_hal_conf.h)(0x6437F289)
@@ -41,7 +41,7 @@ I (../algorithm/pid.h)(0x6437BC9C)
 I (../application/imu.h)(0x62DFFD45)
 I (../algorithm/vector3.h)(0x6121F178)
 I (../application/mpu6050.h)(0x62DFBF02)
-I (../algorithm/ahrs.h)(0x61FAC5B5)
+I (../algorithm/ahrs.h)(0x643AA2B5)
 F (../Src/gpio.c)(0x6436B530)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../application -I ../boards -I ../controller -I ../algorithm-I.\RTE\_Balance_car-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o balance_car\gpio.o --omf_browse balance_car\gpio.crf --depend balance_car\gpio.d)
 I (../Inc/gpio.h)(0x6436B530)
 I (../Inc/main.h)(0x6436B531)
@@ -756,7 +756,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x62D8B8B5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x62D8B8B5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x62D8B8B5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x62D8B8B5)
-F (..\controller\tim_it.c)(0x643941F6)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../application -I ../boards -I ../controller -I ../algorithm-I.\RTE\_Balance_car-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o balance_car\tim_it.o --omf_browse balance_car\tim_it.crf --depend balance_car\tim_it.d)
+F (..\controller\tim_it.c)(0x643ABBF4)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../application -I ../boards -I ../controller -I ../algorithm-I.\RTE\_Balance_car-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o balance_car\tim_it.o --omf_browse balance_car\tim_it.crf --depend balance_car\tim_it.d)
 I (..\controller\tim_it.h)(0x6438CAD4)
 I (../application/sys.h)(0x64153E8E)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x62D8B8B5)
@@ -791,12 +791,12 @@ I (../Inc/main.h)(0x6436B531)
 I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x569DEA3A)
 I (../Inc/tim.h)(0x6436B530)
 I (../algorithm/pid.h)(0x6437BC9C)
-I (../algorithm/ahrs.h)(0x61FAC5B5)
+I (../algorithm/ahrs.h)(0x643AA2B5)
+I (../algorithm/vector3.h)(0x6121F178)
 I (../boards/bsp_motor.h)(0x64153E8E)
 I (../application/speed_ctrl.h)(0x6415CE6F)
 I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x569DEA3A)
 I (../application/imu.h)(0x62DFFD45)
-I (../algorithm/vector3.h)(0x6121F178)
 I (../application/mpu6050.h)(0x62DFBF02)
 I (../algorithm/sin_generate.h)(0x64153E8E)
 F (..\application\speed_ctrl.c)(0x6437F235)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../application -I ../boards -I ../controller -I ../algorithm-I.\RTE\_Balance_car-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o balance_car\speed_ctrl.o --omf_browse balance_car\speed_ctrl.crf --depend balance_car\speed_ctrl.d)
@@ -833,7 +833,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x62D8B8B5)
 I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x569DEA3A)
 I (../controller/tim_it.h)(0x6438CAD4)
 I (../algorithm/pid.h)(0x6437BC9C)
-F (..\application\imu.c)(0x64394552)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../application -I ../boards -I ../controller -I ../algorithm-I.\RTE\_Balance_car-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o balance_car\imu.o --omf_browse balance_car\imu.crf --depend balance_car\imu.d)
+F (..\application\imu.c)(0x643AACAB)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../application -I ../boards -I ../controller -I ../algorithm-I.\RTE\_Balance_car-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o balance_car\imu.o --omf_browse balance_car\imu.crf --depend balance_car\imu.d)
 I (..\application\imu.h)(0x62DFFD45)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
 I (../algorithm/vector3.h)(0x6121F178)
@@ -1009,9 +1009,10 @@ F (..\algorithm\Filter.c)(0x6121F178)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=int
 I (..\algorithm\Filter.h)(0x6121F178)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x569DEA3A)
-F (..\algorithm\ahrs.c)(0x64394200)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../application -I ../boards -I ../controller -I ../algorithm-I.\RTE\_Balance_car-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o balance_car\ahrs.o --omf_browse balance_car\ahrs.crf --depend balance_car\ahrs.d)
-I (..\algorithm\ahrs.h)(0x61FAC5B5)
+F (..\algorithm\ahrs.c)(0x643AAD40)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../application -I ../boards -I ../controller -I ../algorithm-I.\RTE\_Balance_car-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o balance_car\ahrs.o --omf_browse balance_car\ahrs.crf --depend balance_car\ahrs.d)
+I (..\algorithm\ahrs.h)(0x643AA2B5)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\algorithm\vector3.h)(0x6121F178)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x569DEA3A)
 I (../application/time_cnt.h)(0x6438C535)
 I (../Inc/tim.h)(0x6436B530)
@@ -1045,7 +1046,6 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x62D8B8B5)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x62D8B8B5)
 I (../Inc/usart.h)(0x6436B531)
 I (../application/imu.h)(0x62DFFD45)
-I (../algorithm/vector3.h)(0x6121F178)
 I (../application/mpu6050.h)(0x62DFBF02)
 I (..\algorithm\Filter.h)(0x6121F178)
 I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x569DEA3A)

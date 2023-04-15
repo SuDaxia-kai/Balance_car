@@ -35,10 +35,10 @@ balance_car\tim_it.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 balance_car\tim_it.o: ../Inc/tim.h
 balance_car\tim_it.o: ../algorithm/pid.h
 balance_car\tim_it.o: ../algorithm/ahrs.h
+balance_car\tim_it.o: ../algorithm/vector3.h
 balance_car\tim_it.o: ../boards/bsp_motor.h
 balance_car\tim_it.o: ../application/speed_ctrl.h
 balance_car\tim_it.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 balance_car\tim_it.o: ../application/imu.h
-balance_car\tim_it.o: ../algorithm/vector3.h
 balance_car\tim_it.o: ../application/mpu6050.h
 balance_car\tim_it.o: ../algorithm/sin_generate.h

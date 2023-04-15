@@ -81,7 +81,7 @@ void get_imu_data()
 	gyroRawData.y = gyroRawData.y - Gyro_Offset.y;
 	gyroRawData.z = gyroRawData.z - Gyro_Offset.z;
 	//printf("{ACC_z:%d,%d,%d}\n\r",accRawData.x,accRawData.y,accRawData.z);
-//	printf("{Gyro:%d,%d,%d}\n\r",gyroRawData.x,gyroRawData.y,gyroRawData.z);
+	//printf("{Gyro:%d,%d,%d}\n\r",gyroRawData.x,gyroRawData.y,gyroRawData.z);
 	
 	//陀螺仪数据低通滤波
 	gyroDataFilter.x = Butterworth_Filter(gyroRawData.x, &Gyro_BufferData[0], &Gyro_Parameter);
@@ -92,8 +92,8 @@ void get_imu_data()
 	accDataFilter.x = Butterworth_Filter(accRawData.x, &Accel_BufferData[0], &Accel_Parameter);
 	accDataFilter.y = Butterworth_Filter(accRawData.y, &Accel_BufferData[1], &Accel_Parameter);
 	accDataFilter.z = Butterworth_Filter(accRawData.z, &Accel_BufferData[2], &Accel_Parameter);
-	printf("{GYRO:%d,%d,%d}\n\r",gyroDataFilter.x,gyroDataFilter.y,gyroDataFilter.z);
-	//printf("{ACC_z:%d,%d,%d}\n\r",accDataFilter.x,accDataFilter.y,accDataFilter.z);
+//	printf("{GYRO:%d,%d,%d}\n\r",gyroDataFilter.x,gyroDataFilter.y,gyroDataFilter.z);
+//	printf("{ACC_z:%d,%d,%d}\n\r",accDataFilter.x,accDataFilter.y,accDataFilter.z);
 	//陀螺仪矫正数据不滤波
   gyroCorrectFilter.x = gyroRawData.x;
   gyroCorrectFilter.y = gyroRawData.y;

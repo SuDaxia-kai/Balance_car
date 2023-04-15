@@ -39,6 +39,8 @@ static Vector4q quad_history[Quad_Num];
 //本次四元数值
 static Vector4q this_quad;
 
+Vector3f_t this_gyro;
+
 /**********************************************************************************************************
 *函 数 名: invSqrt
 *功能说明: 求1/sqrt(x)
@@ -131,7 +133,7 @@ void ahrs_update()
 	//上次次陀螺仪角速度
 	static Vector3f_t gyro_history[Quad_Num];
 	//这次陀螺仪角速度
-	static Vector3f_t this_gyro;
+//	static Vector3f_t this_gyro;
 	//加速度历史值
 	static Vector3f_t accel_history[Quad_Num];
 	//本次加速度
@@ -189,10 +191,11 @@ void ahrs_update()
 	}
 
 
-	this_accel.x = acceCorrectFilter.x;
-	this_accel.y = acceCorrectFilter.y;
-	this_accel.z = acceCorrectFilter.z;
-
+	this_accel.x = acceCorrectFilter.x * ACCEL_SCALE;
+	this_accel.y = acceCorrectFilter.y * ACCEL_SCALE;
+	this_accel.z = acceCorrectFilter.z * ACCEL_SCALE;
+//	printf("{acc velocity:%f,%f,%f}\r\n",this_accel.x,this_accel.y,this_accel.z);
+	
 	//保存陀螺仪值
 	for (i = Quad_Num; i > 0; i--) {
 		gyro_history[i] = gyro_history[i - 1];
@@ -201,7 +204,7 @@ void ahrs_update()
 	this_gyro.x = gyroDataFilter.x * GYRO_CALIBRATION_COFF;
 	this_gyro.y = gyroDataFilter.y * GYRO_CALIBRATION_COFF;
 	this_gyro.z = gyroDataFilter.z * GYRO_CALIBRATION_COFF;
-//	printf("{4quad:%f,%f,%f}\r\n",this_gyro.x,this_gyro.y,this_gyro.z);
+//	printf("{angle velocity:%f,%f,%f}\r\n",this_gyro.x,this_gyro.y,this_gyro.z);
 	
 	//角速度模长
 	Gyro_Length = sqrt(this_gyro.x * this_gyro.x + this_gyro.y * this_gyro.y + this_gyro.z * this_gyro.z);
@@ -215,6 +218,7 @@ void ahrs_update()
 	recip_accel.x *= recipNorm;
 	recip_accel.y *= recipNorm;
 	recip_accel.z *= recipNorm;
+
 
 	/* 避免重复运算 */
 	_2q0 = 2.0f * quad_history[TimeSync_Cnt].q0;
@@ -275,7 +279,6 @@ void ahrs_update()
 	qDot2 -= BETADEF * s1;
 	qDot3 -= BETADEF * s2;
 	qDot4 -= BETADEF * s3;
-	
 
 	
 	//补偿由四元数微分方程引入的姿态误差
@@ -297,7 +300,7 @@ void ahrs_update()
 	Pitch = atan2(2.0f * this_quad.q2 * this_quad.q3 + 2.0f * this_quad.q0 * this_quad.q1, -2.0f * this_quad.q1 * this_quad.q1 - 2.0f * this_quad.q2 * this_quad.q2 + 1.0f) * RAD2DEG;
 	Roll = asin(2.0f * this_quad.q0 * this_quad.q2 - 2.0f * this_quad.q1 * this_quad.q3) * RAD2DEG;
 	Yaw = atan2(2.0f * this_quad.q1 * this_quad.q2 + 2.0f * this_quad.q0 * this_quad.q3, -2.0f * this_quad.q3 * this_quad.q3 - 2.0f * this_quad.q2 * this_quad.q2 + 1.0f) * RAD2DEG;
-	printf("{Gyro:%f,%f,%f}\r\n",Yaw,Pitch,Roll);
+	printf("{Euler angle:%f,%f,%f}\r\n",Yaw,Pitch,Roll);
 	ComputeRotationMatrix();
 }
 
