@@ -1,5 +1,6 @@
 --cpu Cortex-M3
 "balance_car\startup_stm32f103xe.o"
+"balance_car\myiic.o"
 "balance_car\main.o"
 "balance_car\gpio.o"
 "balance_car\dma.o"
@@ -8,7 +9,6 @@
 "balance_car\usart.o"
 "balance_car\stm32f1xx_it.o"
 "balance_car\stm32f1xx_hal_msp.o"
-"balance_car\myiic.o"
 "balance_car\stm32f1xx_hal_gpio_ex.o"
 "balance_car\stm32f1xx_hal_i2c.o"
 "balance_car\stm32f1xx_hal.o"

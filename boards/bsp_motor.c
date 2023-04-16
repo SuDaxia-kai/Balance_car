@@ -66,7 +66,8 @@ int read_encoder(uint8_t TIMX)
 	int Encoder_TIM;    
 	switch(TIMX)
 	{
-		case 2:  Encoder_TIM= (short)TIM2 -> CNT;  TIM2 -> CNT = 0; /*L0step-=Encoder_TIM;*/
+		case 2:  
+			Encoder_TIM= (short)TIM2 -> CNT;  TIM2 -> CNT = 0; /*L0step-=Encoder_TIM;*/
 			break;
 		case 3:  Encoder_TIM= (short)TIM3 -> CNT;  TIM3 -> CNT=0;   /*L1step-=Encoder_TIM;*/
 			break;	
