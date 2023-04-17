@@ -32,4 +32,5 @@ balance_car\speed_ctrl.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_
 balance_car\speed_ctrl.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 balance_car\speed_ctrl.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 balance_car\speed_ctrl.o: ../controller/tim_it.h
+balance_car\speed_ctrl.o: ../algorithm/Filter.h
 balance_car\speed_ctrl.o: ../algorithm/pid.h

@@ -1,5 +1,6 @@
 #include "speed_ctrl.h"
 #include "tim_it.h"
+#include "Filter.h"
 #include "pid.h"
 
 volatile struct Motors motor_all = {

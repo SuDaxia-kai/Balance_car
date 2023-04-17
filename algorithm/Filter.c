@@ -1,7 +1,9 @@
 #include "Filter.h"
 #include "math.h"
+#include "stdio.h"
+#include <string.h>
 
-#define PI 3.1415926f
+
 
 /**********************************************************************************************************
 *º¯ Êý Ãû: GildeAverageValueFilter
@@ -78,4 +80,30 @@ void Set_Cutoff_Frequency(float sample_frequent, float cutoff_frequent, Butter_P
 	LPF->a[0] = 1.0f;
 	LPF->a[1] = 2.0f * (ohm * ohm - 1.0f) / c;
 	LPF->a[2] = (1.0f - 2.0f * cosf(PI / 4.0f) * ohm + ohm * ohm) / c;
+}
+
+/***************************************************************
+*@brief   This function perform Filtering on encoder values
+*@version 0.0.1
+*@param   record
+*@param   
+****************************************************************/
+float Speed_low_filter(MvfPtr record, int Observation_new)
+{
+	record->sum -= record->butter[0];
+	for( int i = 0; i < MVF_LENGTH-1; i++)
+	{
+		record->butter[i] = record->butter[i+1];
+	}
+	record->sum += Observation_new;
+	return record->sum/MVF_LENGTH;
+}
+
+/*************************************************
+*************************************************/
+void MVF_init(MvfPtr record)
+{
+	memset(record->butter, 0, sizeof(record->butter)/sizeof(*(record->butter)));
+	record->sum = 0;
+	printf("%d", record->butter[9]);
 }

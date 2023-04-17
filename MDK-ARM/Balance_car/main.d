@@ -36,6 +36,7 @@ balance_car\main.o: ../Inc/usart.h
 balance_car\main.o: ../Inc/gpio.h
 balance_car\main.o: ../boards/bsp_motor.h
 balance_car\main.o: ../application/sys.h
+balance_car\main.o: ../algorithm/Filter.h
 balance_car\main.o: ../algorithm/pid.h
 balance_car\main.o: ../application/imu.h
 balance_car\main.o: ../algorithm/vector3.h

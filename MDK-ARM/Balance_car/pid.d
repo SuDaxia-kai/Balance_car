@@ -31,4 +31,5 @@ balance_car\pid.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 balance_car\pid.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 balance_car\pid.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 balance_car\pid.o: ../boards/bsp_motor.h
+balance_car\pid.o: ../algorithm/Filter.h
 balance_car\pid.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

@@ -110,6 +110,7 @@ int main(void)
 	ahrs_init();
 	HAL_TIM_Base_Start_IT(&htim6);
 
+
   /* USER CODE END 2 */
 
   /* Infinite loop */

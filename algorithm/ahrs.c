@@ -300,7 +300,7 @@ void ahrs_update()
 	Pitch = atan2(2.0f * this_quad.q2 * this_quad.q3 + 2.0f * this_quad.q0 * this_quad.q1, -2.0f * this_quad.q1 * this_quad.q1 - 2.0f * this_quad.q2 * this_quad.q2 + 1.0f) * RAD2DEG;
 	Roll = asin(2.0f * this_quad.q0 * this_quad.q2 - 2.0f * this_quad.q1 * this_quad.q3) * RAD2DEG;
 	Yaw = atan2(2.0f * this_quad.q1 * this_quad.q2 + 2.0f * this_quad.q0 * this_quad.q3, -2.0f * this_quad.q3 * this_quad.q3 - 2.0f * this_quad.q2 * this_quad.q2 + 1.0f) * RAD2DEG;
-	printf("{Euler angle:%f,%f,%f}\r\n",Yaw,Pitch,Roll);
+//	printf("{Euler angle:%f,%f,%f}\r\n",Yaw,Pitch,Roll);
 	ComputeRotationMatrix();
 }
 

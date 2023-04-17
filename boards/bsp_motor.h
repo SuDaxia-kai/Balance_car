@@ -2,8 +2,10 @@
 #define __BSP_MOTOR_H
 
 #include "sys.h"
+#include "Filter.h"
 
 #define MOTOR_PWM_MAX 6000
+
 
 //使能定时器PWM通道
 void motor_pwm_enable(void);
