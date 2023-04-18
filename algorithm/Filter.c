@@ -82,12 +82,12 @@ void Set_Cutoff_Frequency(float sample_frequent, float cutoff_frequent, Butter_P
 	LPF->a[2] = (1.0f - 2.0f * cosf(PI / 4.0f) * ohm + ohm * ohm) / c;
 }
 
-/***************************************************************
+/*******************************************************************
 *@brief   This function perform Filtering on encoder values
 *@version 0.0.1
-*@param   record
-*@param   
-****************************************************************/
+*@param   record    -The history of the data what you want to filter
+*@param   Observation_new   -New observation
+*******************************************************************/
 float Speed_low_filter(MvfPtr record, int Observation_new)
 {
 	record->sum -= record->butter[0];
@@ -95,15 +95,16 @@ float Speed_low_filter(MvfPtr record, int Observation_new)
 	{
 		record->butter[i] = record->butter[i+1];
 	}
+	record->butter[MVF_LENGTH-1] = Observation_new;
 	record->sum += Observation_new;
 	return record->sum/MVF_LENGTH;
 }
 
 /*************************************************
+
 *************************************************/
 void MVF_init(MvfPtr record)
 {
 	memset(record->butter, 0, sizeof(record->butter)/sizeof(*(record->butter)));
 	record->sum = 0;
-	printf("%d", record->butter[9]);
 }

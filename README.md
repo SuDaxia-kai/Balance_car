@@ -18,9 +18,19 @@ TIM6定时中断：
 
 右轮：B 
 
-TIM2: 2
+TIM2: set_pwm_2  A
 
-TIM3: 1
+TIM3: set_pwm_1  B
+
+set_pwm_1  负的代表正着走
+
+set_pwm_2  正的代表正着走
+
+
+
+目前直立环的参数为 620 6 相对来说效果颇佳
+
+
 
 
 

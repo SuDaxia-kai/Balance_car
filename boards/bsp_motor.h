@@ -6,7 +6,8 @@
 
 #define MOTOR_PWM_MAX 6000
 
-
+extern Moving_Filter record2;
+extern Moving_Filter record3;
 //使能定时器PWM通道
 void motor_pwm_enable(void);
 

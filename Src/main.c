@@ -103,13 +103,13 @@ int main(void)
 	motor_pwm_enable();
 	pid_init();
 	imu_init();
-	
-	//IMU
 	CalibrationAcc();
 	CalibrationGyro();
 	ahrs_init();
+	MVF_init(&record2);
+	MVF_init(&record3);
 	HAL_TIM_Base_Start_IT(&htim6);
-
+	
 
   /* USER CODE END 2 */
 

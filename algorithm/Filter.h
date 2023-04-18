@@ -1,6 +1,6 @@
 #ifndef _FILTER_H
 #define _FILTER_H
-#define MVF_LENGTH 10
+#define MVF_LENGTH 8
 #define PI 3.1415926f
 
 #include <stdint.h>

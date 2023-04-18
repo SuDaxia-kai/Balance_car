@@ -87,8 +87,8 @@ float positional_PID (struct P_pid_obj *obj, struct PID_param *pid)
 void pid_init(void)
 {
 	motor_pid_param.outputMax = MOTOR_PWM_MAX + 100;
-	motor_pid_param.kp = 55;
-	motor_pid_param.ki = 0;
+	motor_pid_param.kp = -90;
+	motor_pid_param.ki = -0.45;
 	motor_pid_param.kd = 0;//25
 	motor_pid_param.differential_filterK = 0.5;
 	motor_pid_param.actualMax = 200;

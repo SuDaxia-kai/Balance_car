@@ -33,3 +33,5 @@ balance_car\bsp_motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.
 balance_car\bsp_motor.o: ../algorithm/Filter.h
 balance_car\bsp_motor.o: ../Inc/main.h
 balance_car\bsp_motor.o: ../Inc/tim.h
+balance_car\bsp_motor.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+balance_car\bsp_motor.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

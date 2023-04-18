@@ -1,12 +1,16 @@
 #include "bsp_motor.h"
 #include "main.h"
 #include "tim.h"
+#include "stdio.h"
+#include <stdlib.h>
 
+// The variable of encoder
+Moving_Filter record2;
+Moving_Filter record3;
 
-
-/**********
+/********************************
  * @brief Enable Timer
-*/
+********************************/
 void motor_pwm_enable(void)
 {
 	// ENABLE PWM_CHANNELS OF TIM
