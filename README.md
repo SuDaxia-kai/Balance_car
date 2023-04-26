@@ -66,3 +66,7 @@ KP = 320
 <img src="C:\Users\SuDaxia\AppData\Roaming\Typora\typora-user-images\image-20230426005542158.png" alt="image-20230426005542158" style="zoom:50%;" />
 
 0.75
+
+## 速度环
+
+对编码器的值进行一阶低通滤波，目的是为了不让速度产生骤变，让速度更加平滑。

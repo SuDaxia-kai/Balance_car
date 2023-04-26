@@ -3,21 +3,11 @@
 
 #include "sys.h"
 
-struct I_pid_obj {
-	float output;
-	int bias;
-	int last_bias;
-	int last2_bias;
-	int measure;
-	int target;
-};
-typedef struct I_pid_obj* IPidPtr;
-
 struct P_pid_obj {
 	float output;
 	float bias;
 	float measure;
-	float last_bias;
+	float encoder;
 	float integral;
 	float last_differential;
 	float target;
@@ -28,11 +18,10 @@ typedef struct P_pid_obj* PPidPtr;
 //系数越小滤波效应越大，当系数为1时不进行滤波
 struct PID_param {
 	float kp;
-	float ki;
 	float kd;
 	float Velocity_kp;
 	float Velocity_ki;
-	float Velocity_kd;
+	float Turn_kd;
 	float differential_filterK;
 	float outputMin;
 	float outputMax;
@@ -40,13 +29,12 @@ struct PID_param {
 };
 typedef struct PID_param* PidPtr;
 
-extern struct I_pid_obj motor_A;
-extern struct I_pid_obj motor_B;
-extern struct P_pid_obj motor_T;
+extern struct P_pid_obj motor_SUM;
 extern struct PID_param Car_control_param;
 
-void incremental_PID (IPidPtr motor, PidPtr pid);
-float positional_PID (struct P_pid_obj *obj, struct PID_param *pid);
+
+float Velocity_PI(PPidPtr obj, PidPtr pid);
+float Turn_P(float gyroz, PidPtr pid);
 void pid_init(void);
 void motor_pid_clear(void);
 
