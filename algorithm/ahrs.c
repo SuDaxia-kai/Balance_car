@@ -21,7 +21,7 @@ typedef struct
 //保存历史个数
 #define Quad_Num  20
 //动态步长贝塔
-#define Beta_Base 0.0075f
+#define Beta_Base 0.015f
 #define Yaw_Fusion_Beta 0.025f
 
 //四元数计算出的角度
@@ -300,7 +300,7 @@ void ahrs_update()
 	Pitch = atan2(2.0f * this_quad.q2 * this_quad.q3 + 2.0f * this_quad.q0 * this_quad.q1, -2.0f * this_quad.q1 * this_quad.q1 - 2.0f * this_quad.q2 * this_quad.q2 + 1.0f) * RAD2DEG;
 	Roll = asin(2.0f * this_quad.q0 * this_quad.q2 - 2.0f * this_quad.q1 * this_quad.q3) * RAD2DEG;
 	Yaw = atan2(2.0f * this_quad.q1 * this_quad.q2 + 2.0f * this_quad.q0 * this_quad.q3, -2.0f * this_quad.q3 * this_quad.q3 - 2.0f * this_quad.q2 * this_quad.q2 + 1.0f) * RAD2DEG;
-//	printf("{Euler angle:%f,%f,%f}\r\n",Yaw,Pitch,Roll);
+//	printf("{angle:%f}\r\n",Pitch);
 	ComputeRotationMatrix();
 }
 

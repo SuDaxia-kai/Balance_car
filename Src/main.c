@@ -39,6 +39,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define __IMUINIT__
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -54,6 +55,7 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+static void MX_NVIC_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -99,13 +101,41 @@ int main(void)
   MX_TIM6_Init();
   MX_USART3_UART_Init();
   MX_I2C1_Init();
+  MX_USART2_UART_Init();
+
+  /* Initialize interrupts */
+  MX_NVIC_Init();
   /* USER CODE BEGIN 2 */
 	motor_pwm_enable();
 	pid_init();
 	imu_init();
+	
+	#ifdef __IMUINIT__
 	CalibrationAcc();
 	CalibrationGyro();
+	#endif
+	
+	#ifdef __NORMAL__
+	Acc_Offset.x = 551;
+	Acc_Offset.y = -88;
+	Acc_Offset.z = -1097;
+	Gyro_Offset.x = -239;
+	Gyro_Offset.y = -107;
+	Gyro_Offset.z = -191;
+	
+	vector3f_t acce;
+	
+	acce.x = _ptr_acce->x * ACCEL_SCALE;
+	acce.y = _ptr_acce->y * ACCEL_SCALE;
+	acce.z = _ptr_acce->z * ACCEL_SCALE;
+	
+	_ptr_pose->roll = atan2( acce.y, acce.z);
+	_ptr_pose->pitch = -atan2( acce.x	, sqrt(acce.y*acce.y + acce.z*acce.z) );
+	
+	
+	#endif
 	ahrs_init();
+//	imu_wit_init();
 	MVF_init(&record2);
 	MVF_init(&record3);
 	HAL_TIM_Base_Start_IT(&htim6);
@@ -161,6 +191,17 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief NVIC Configuration.
+  * @retval None
+  */
+static void MX_NVIC_Init(void)
+{
+  /* DMA1_Channel3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel3_IRQn);
 }
 
 /* USER CODE BEGIN 4 */

@@ -4,7 +4,7 @@
 #include "sys.h"
 #include "Filter.h"
 
-#define MOTOR_PWM_MAX 6000
+#define MOTOR_PWM_MAX 7000
 
 extern Moving_Filter record2;
 extern Moving_Filter record3;

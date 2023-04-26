@@ -37,6 +37,7 @@
 "balance_car\bsp_delay.o"
 "balance_car\bsp_motor.o"
 "balance_car\bsp_servo_iic.o"
+"balance_car\bsp_imu.o"
 --strict --scatter "Balance_car\Balance_car.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

@@ -30,6 +30,9 @@ struct PID_param {
 	float kp;
 	float ki;
 	float kd;
+	float Velocity_kp;
+	float Velocity_ki;
+	float Velocity_kd;
 	float differential_filterK;
 	float outputMin;
 	float outputMax;
@@ -39,12 +42,10 @@ typedef struct PID_param* PidPtr;
 
 extern struct I_pid_obj motor_A;
 extern struct I_pid_obj motor_B;
-extern struct PID_param motor_pid_param;
+extern struct P_pid_obj motor_T;
+extern struct PID_param Car_control_param;
 
-extern struct P_pid_obj gyroT_pid, gyroG_pid;
-extern struct PID_param gyroT_pid_param, gyroG_pid_param;
-
-void incremental_PID ( IPidPtr motor, PidPtr pid);
+void incremental_PID (IPidPtr motor, PidPtr pid);
 float positional_PID (struct P_pid_obj *obj, struct PID_param *pid);
 void pid_init(void);
 void motor_pid_clear(void);

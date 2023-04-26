@@ -141,7 +141,7 @@ void CalibrationAcc()
 	Acc_Offset.y = acce_sample_sum.y / num_samples;
 	Acc_Offset.z = acce_sample_sum.z / num_samples;
 	
-//	printf("Acc_RawData_Offset:%d,%d,%d\n\r",Acc_Offset.x,Acc_Offset.y,Acc_Offset.z);
+	printf("Acc_RawData_Offset:%d,%d,%d\n\r",Acc_Offset.x,Acc_Offset.y,Acc_Offset.z);
 	printf("Acc Calibration Stop\n\r");
 }
 
@@ -170,7 +170,7 @@ void CalibrationGyro()
 	Gyro_Offset.y = gtro_sample_sum.y / num_samples;
 	Gyro_Offset.z = gtro_sample_sum.z / num_samples;
 	
-//	printf("Gyro_RawData_Offset:%d,%d,%d\n\r",Gyro_Offset.x,Gyro_Offset.y,Gyro_Offset.z);
+	printf("Gyro_RawData_Offset:%d,%d,%d\n\r",Gyro_Offset.x,Gyro_Offset.y,Gyro_Offset.z);
 	printf("Gyro Calibration Stop\n\r");
 }
 

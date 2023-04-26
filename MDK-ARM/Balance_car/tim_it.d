@@ -36,6 +36,8 @@ balance_car\tim_it.o: ../Inc/tim.h
 balance_car\tim_it.o: ../algorithm/pid.h
 balance_car\tim_it.o: ../algorithm/ahrs.h
 balance_car\tim_it.o: ../algorithm/vector3.h
+balance_car\tim_it.o: ../boards/bsp_imu.h
+balance_car\tim_it.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 balance_car\tim_it.o: ../boards/bsp_motor.h
 balance_car\tim_it.o: ../algorithm/Filter.h
 balance_car\tim_it.o: ../application/speed_ctrl.h

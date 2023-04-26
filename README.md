@@ -28,9 +28,11 @@ set_pwm_2  正的代表正着走
 
 
 
-目前直立环的参数为 620 6 相对来说效果颇佳
+姿态结算频率：200hz
 
+控制频率        ：100hz
 
+对于MIT IMU的机械中值是-1°
 
 
 
@@ -40,3 +42,27 @@ set_pwm_2  正的代表正着走
 
 还有一个就是说 MPU6050 返回的 Pitch 角度是会有误差的， 目前是 $10^{-1}$精度的误差，太恐怖了，假设 kp = 200, 相当于误差被拉了 20，算出来会有$ m/s^2$,所以目前解决的办法是通过取整，直接对 pitch 角度取整，但其实这丧失了响应的快速性，离散的太大了，得拉大kd补回来
 
+
+
+## 对于直立环$K_p$的调节
+
+对平衡车进行稳态误差分析如下：
+$$
+\begin{align*}
+e_s&=\lim_{t \to \infty}[r(t)-y(t)]=\lim_{t \to \infty}[r(t)-\phi(t) r(t)]=\lim_{s \to 0}s[R(s)-\Phi(s) R(s)] \\
+   &=\lim_{s \to 0}\frac{sR(s)}{1+Q(s)}
+\end{align*}
+$$
+KP = 280
+
+<img src="C:\Users\SuDaxia\AppData\Roaming\Typora\typora-user-images\image-20230426005315789.png" alt="image-20230426005315789" style="zoom:50%;" />
+
+KP =290
+
+<img src="C:\Users\SuDaxia\AppData\Local\Temp\WeChat Files\dbd44bc182e029f9ff9e223a3ea4f79.png" alt="dbd44bc182e029f9ff9e223a3ea4f79" style="zoom:50%;" />
+
+KP = 320
+
+<img src="C:\Users\SuDaxia\AppData\Roaming\Typora\typora-user-images\image-20230426005542158.png" alt="image-20230426005542158" style="zoom:50%;" />
+
+0.75
