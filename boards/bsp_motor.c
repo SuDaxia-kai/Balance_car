@@ -4,6 +4,8 @@
 #include "stdio.h"
 #include <stdlib.h>
 
+#define __DEADBADN__
+
 // The variable of encoder
 Moving_Filter record2;
 Moving_Filter record3;
@@ -33,6 +35,9 @@ void motor_set_pwm(uint8_t motor, int32_t pid_out)
 	
 	if (pid_out >= 0)
 	{
+		#ifdef __DEADBADN__
+		pid_out += 3020;
+		#endif
 		if (pid_out > MOTOR_PWM_MAX)
 			ccr = MOTOR_PWM_MAX;
 		else
@@ -48,6 +53,9 @@ void motor_set_pwm(uint8_t motor, int32_t pid_out)
 	
 	else if (pid_out < 0)
 	{
+		#ifdef __DEADBADN__
+		pid_out -= 3020;
+		#endif
 		if (pid_out < -MOTOR_PWM_MAX)
 			ccr = MOTOR_PWM_MAX;
 		else

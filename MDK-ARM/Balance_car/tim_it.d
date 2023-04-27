@@ -40,8 +40,5 @@ balance_car\tim_it.o: ../boards/bsp_imu.h
 balance_car\tim_it.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 balance_car\tim_it.o: ../boards/bsp_motor.h
 balance_car\tim_it.o: ../algorithm/Filter.h
-balance_car\tim_it.o: ../application/speed_ctrl.h
-balance_car\tim_it.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 balance_car\tim_it.o: ../application/imu.h
 balance_car\tim_it.o: ../application/mpu6050.h
-balance_car\tim_it.o: ../algorithm/sin_generate.h

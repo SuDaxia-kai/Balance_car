@@ -644,11 +644,6 @@
           <GroupName>application</GroupName>
           <Files>
             <File>
-              <FileName>speed_ctrl.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\application\speed_ctrl.c</FilePath>
-            </File>
-            <File>
               <FileName>imu.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\application\imu.c</FilePath>
@@ -674,11 +669,6 @@
               <FilePath>..\algorithm\pid.c</FilePath>
             </File>
             <File>
-              <FileName>sin_generate.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\algorithm\sin_generate.c</FilePath>
-            </File>
-            <File>
               <FileName>Filter.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\algorithm\Filter.c</FilePath>
@@ -702,11 +692,6 @@
               <FileName>bsp_motor.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\boards\bsp_motor.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_servo_iic.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\boards\bsp_servo_iic.c</FilePath>
             </File>
             <File>
               <FileName>bsp_imu.c</FileName>

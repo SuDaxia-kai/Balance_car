@@ -131,9 +131,8 @@ int main(void)
 	
 	_ptr_pose->roll = atan2( acce.y, acce.z);
 	_ptr_pose->pitch = -atan2( acce.x	, sqrt(acce.y*acce.y + acce.z*acce.z) );
-	
-	
 	#endif
+	
 	ahrs_init();
 //	imu_wit_init();
 	MVF_init(&record2);

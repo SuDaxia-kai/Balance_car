@@ -23,8 +23,8 @@ float Velocity_PI(PPidPtr obj, PidPtr pid)
 	obj->encoder *= 0.7;
 	obj->encoder += obj->bias*0.3;
 	obj->integral += obj->encoder;
-	if(obj->integral>100000)  obj->integral=100000;              
-	if(obj->integral<-100000) obj->integral=-100000;              
+	if(obj->integral>10000)  obj->integral=10000;              
+	if(obj->integral<-10000) obj->integral=-10000;              
 	obj->output = pid->Velocity_kp * obj->encoder + pid->Velocity_ki * obj->integral;
 	return obj->output;
 }
@@ -34,7 +34,7 @@ float Velocity_PI(PPidPtr obj, PidPtr pid)
 计算加速度 acc = -kp(kp_1 * error + ki1 * sum(e(k)))
 根据线性调参经验，系数关系为 kp_1 = ki_1 * 200
 ************************************************************************/
-float Turn_P(float gyroz, PidPtr pid)
+float Turn_D(float gyroz, PidPtr pid)
 {
 	return pid->Turn_kd * gyroz;
 }
@@ -42,11 +42,11 @@ float Turn_P(float gyroz, PidPtr pid)
 void pid_init(void)
 {
 	Car_control_param.outputMax = MOTOR_PWM_MAX + 100;
-	Car_control_param.kp = 200;  // 420  330
-	Car_control_param.kd = 9;   // 4   2.5
-	Car_control_param.Velocity_kp = -0.99;
-	Car_control_param.Velocity_ki = Car_control_param.Velocity_kp/150;
-	Car_control_param.Turn_kd = 0;
+	Car_control_param.kp = 200;  // 420  330  200
+	Car_control_param.kd = 18;   // 4   2.5    9
+	Car_control_param.Velocity_kp = -3.36;
+	Car_control_param.Velocity_ki = Car_control_param.Velocity_kp/185;
+	Car_control_param.Turn_kd = 18;
 	Car_control_param.differential_filterK = 0.5;
 	Car_control_param.actualMax = 200;
 	motor_pid_clear();

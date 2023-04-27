@@ -32,14 +32,12 @@ typedef struct PID_param* PidPtr;
 extern struct P_pid_obj motor_SUM;
 extern struct PID_param Car_control_param;
 
-
 float Velocity_PI(PPidPtr obj, PidPtr pid);
-float Turn_P(float gyroz, PidPtr pid);
+float Turn_D(float gyroz, PidPtr pid);
 void pid_init(void);
 void motor_pid_clear(void);
 
 void usmart_pid(uint16_t val,int deno,int mode);
-
 
 
 #endif
