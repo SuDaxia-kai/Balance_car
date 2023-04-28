@@ -60,6 +60,7 @@ void USART2_IRQHandler(void)
 					imu.pitch = 180.0*(short)((imu_rx_buf[25]<<8)|imu_rx_buf[24])/32768.0;  
 					imu.roll  = 180.0*(short)((imu_rx_buf[27]<<8)|imu_rx_buf[26])/32768.0;
 					imu.yaw   = 180.0*(short)((imu_rx_buf[29]<<8)|imu_rx_buf[28])/32768.0;
+					printf("{Pitch:%f,%f}\r\n",Pitch,imu.roll);
 					if(imu.yaw>360) imu.yaw -= 360;
 					else if(imu.yaw<0) imu.yaw += 360;
 				}

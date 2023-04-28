@@ -4,7 +4,10 @@
 #include "sys.h"
 #include "Filter.h"
 
-#define MOTOR_PWM_MAX 7000
+#define MOTOR_PWM_MAX   7000
+#define RADIUS_WHEEL    32.5
+#define REDUCTION_RATIO 30
+#define PSC             4
 
 extern Moving_Filter record2;
 extern Moving_Filter record3;

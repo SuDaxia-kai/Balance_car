@@ -678,6 +678,11 @@
               <FileType>1</FileType>
               <FilePath>..\algorithm\ahrs.c</FilePath>
             </File>
+            <File>
+              <FileName>kalman_filter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\algorithm\kalman_filter.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

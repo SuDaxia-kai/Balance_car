@@ -137,6 +137,7 @@ int main(void)
 //	imu_wit_init();
 	MVF_init(&record2);
 	MVF_init(&record3);
+	kf_init();
 	HAL_TIM_Base_Start_IT(&htim6);
 	
 
