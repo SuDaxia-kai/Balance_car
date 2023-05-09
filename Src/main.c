@@ -29,7 +29,9 @@
 #include "bsp_motor.h"
 #include "pid.h"
 #include "imu.h"
+#include "kalman_filter.h"
 #include "ahrs.h"
+#include "remote_ctrl.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -101,7 +103,7 @@ int main(void)
   MX_TIM6_Init();
   MX_USART3_UART_Init();
   MX_I2C1_Init();
-  MX_USART2_UART_Init();
+  MX_TIM5_Init();
 
   /* Initialize interrupts */
   MX_NVIC_Init();
@@ -116,21 +118,7 @@ int main(void)
 	#endif
 	
 	#ifdef __NORMAL__
-	Acc_Offset.x = 551;
-	Acc_Offset.y = -88;
-	Acc_Offset.z = -1097;
-	Gyro_Offset.x = -239;
-	Gyro_Offset.y = -107;
-	Gyro_Offset.z = -191;
 	
-	vector3f_t acce;
-	
-	acce.x = _ptr_acce->x * ACCEL_SCALE;
-	acce.y = _ptr_acce->y * ACCEL_SCALE;
-	acce.z = _ptr_acce->z * ACCEL_SCALE;
-	
-	_ptr_pose->roll = atan2( acce.y, acce.z);
-	_ptr_pose->pitch = -atan2( acce.x	, sqrt(acce.y*acce.y + acce.z*acce.z) );
 	#endif
 	
 	ahrs_init();
@@ -139,6 +127,7 @@ int main(void)
 	MVF_init(&record3);
 	kf_init();
 	HAL_TIM_Base_Start_IT(&htim6);
+	ppm_receive_init();
 	
 
   /* USER CODE END 2 */
@@ -166,10 +155,11 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI|RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;

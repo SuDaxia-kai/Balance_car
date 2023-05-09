@@ -26,6 +26,7 @@
 "balance_car\stm32f1xx_hal_uart.o"
 "balance_car\system_stm32f1xx.o"
 "balance_car\tim_it.o"
+"balance_car\remote_ctrl_1.o"
 "balance_car\imu.o"
 "balance_car\mpu6050.o"
 "balance_car\time_cnt.o"
@@ -35,7 +36,6 @@
 "balance_car\kalman_filter.o"
 "balance_car\bsp_delay.o"
 "balance_car\bsp_motor.o"
-"balance_car\bsp_imu.o"
 --strict --scatter "Balance_car\Balance_car.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

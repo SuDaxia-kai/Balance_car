@@ -32,6 +32,7 @@ typedef struct PID_param* PidPtr;
 extern struct P_pid_obj motor_SUM;
 extern struct PID_param Car_control_param;
 
+float UpRight_PD(PidPtr pid, int Movement);
 float Velocity_PI(PPidPtr obj, PidPtr pid);
 float Turn_D(float gyroz, PidPtr pid);
 void pid_init(void);

@@ -42,10 +42,9 @@ static Vector4q this_quad;
 Vector3f_t this_gyro;
 
 /**********************************************************************************************************
-*函 数 名: invSqrt
-*功能说明: 求1/sqrt(x)
-*形    参: x
-*返 回 值: 1/sqrt(x)
+*@brief : 求1/sqrt(x)
+*@param : x
+*@return: 1/sqrt(x)
 **********************************************************************************************************/
 float invSqrt(float x)
 {
@@ -190,7 +189,6 @@ void ahrs_update()
 		sync_cnt = 0;
 	}
 
-
 	this_accel.x = acceCorrectFilter.x * ACCEL_SCALE;
 	this_accel.y = acceCorrectFilter.y * ACCEL_SCALE;
 	this_accel.z = acceCorrectFilter.z * ACCEL_SCALE;
@@ -205,7 +203,7 @@ void ahrs_update()
 	this_gyro.y = gyroDataFilter.y * GYRO_CALIBRATION_COFF;
 	this_gyro.z = gyroDataFilter.z * GYRO_CALIBRATION_COFF;
 //	printf("{angle velocity:%f,%f,%f}\r\n",this_gyro.x,this_gyro.y,this_gyro.z);
-	
+//		printf("{data:%f,%f}",this_accel.z,this_gyro.z);
 	//角速度模长
 	Gyro_Length = sqrt(this_gyro.x * this_gyro.x + this_gyro.y * this_gyro.y + this_gyro.z * this_gyro.z);
 	Gyro_Length_Filter = Gyro_Length;
@@ -241,28 +239,29 @@ void ahrs_update()
 	s2 = 4.0f * q0q0 * quad_history[TimeSync_Cnt].q2 + _2q0 * recip_accel.x + _4q2 * q3q3 - _2q3 * recip_accel.y - _4q2 + _8q2 * q1q1 + _8q2 * q2q2 + _4q2 * recip_accel.z;
 	s3 = 4.0f * q1q1 * quad_history[TimeSync_Cnt].q3 - _2q1 * recip_accel.x + 4.0f * q2q2 * quad_history[TimeSync_Cnt].q2 - _2q2 * recip_accel.y;
 	
-    /* 梯度归一化 */
-    recipNorm = invSqrt(s0 * s0 + s1 * s1 + s2 * s2 + s3 * s3);
-    s0 *= recipNorm;
-    s1 *= recipNorm;
-    s2 *= recipNorm;
-    s3 *= recipNorm;
+	/* 梯度归一化 */
+	recipNorm = invSqrt(s0 * s0 + s1 * s1 + s2 * s2 + s3 * s3);
+	s0 *= recipNorm;
+	s1 *= recipNorm;
+	s2 *= recipNorm;
+	s3 *= recipNorm;
 
 	//计算动态步长
-    BETADEF = Beta_Base + 0.05f * dt * constrain(Gyro_Length_Filter, 0, 400);
+	BETADEF = Beta_Base + 0.05f * dt * constrain(Gyro_Length_Filter, 0, 400);
 	//BETADEF -= 0.01 * (constrain(navigation_acce_length, 0, 1000) / 1000); 
-    BETADEF = constrain(BETADEF, 0.015, 0.12);
+	BETADEF = constrain(BETADEF, 0.015, 0.12);
 
-    vx = 2 * (quad_history[TimeSync_Cnt].q1 * quad_history[TimeSync_Cnt].q3 - quad_history[TimeSync_Cnt].q0 * quad_history[TimeSync_Cnt].q2);
-    vy = 2 * (quad_history[TimeSync_Cnt].q2 * quad_history[TimeSync_Cnt].q3 + quad_history[TimeSync_Cnt].q0 * quad_history[TimeSync_Cnt].q1);
-    vz = 1 - 2 * (quad_history[TimeSync_Cnt].q1 * quad_history[TimeSync_Cnt].q1 + quad_history[TimeSync_Cnt].q2 * quad_history[TimeSync_Cnt].q2);
+	vx = 2 * (quad_history[TimeSync_Cnt].q1 * quad_history[TimeSync_Cnt].q3 - quad_history[TimeSync_Cnt].q0 * quad_history[TimeSync_Cnt].q2);
+	vy = 2 * (quad_history[TimeSync_Cnt].q2 * quad_history[TimeSync_Cnt].q3 + quad_history[TimeSync_Cnt].q0 * quad_history[TimeSync_Cnt].q1);
+	vz = 1 - 2 * (quad_history[TimeSync_Cnt].q1 * quad_history[TimeSync_Cnt].q1 + quad_history[TimeSync_Cnt].q2 * quad_history[TimeSync_Cnt].q2);
 
-    ex = (recip_accel.y * vz - recip_accel.z * vy);
-    ey = (recip_accel.z * vx - recip_accel.x * vz);
-    ez = (recip_accel.x * vy - recip_accel.y * vx);
-    exInt += ex * Ki * dt;
-    eyInt += ey * Ki * dt;
-    ezInt += ez * Ki * dt;
+	/* 叉乘计算误差 */
+	ex = (recip_accel.y * vz - recip_accel.z * vy);
+	ey = (recip_accel.z * vx - recip_accel.x * vz);
+	ez = (recip_accel.x * vy - recip_accel.y * vx);
+	exInt += ex * Ki * dt;
+	eyInt += ey * Ki * dt;
+	ezInt += ez * Ki * dt;
 
 	/* 转换为弧度制，用于姿态更新*/
 	gyro_tmp.x = this_gyro.x * PI / 180 + exInt + Kp * ex;
@@ -280,10 +279,12 @@ void ahrs_update()
 	qDot3 -= BETADEF * s2;
 	qDot4 -= BETADEF * s3;
 
-	
 	//补偿由四元数微分方程引入的姿态误差
 	//将四元数姿态导数积分,得到当前四元数姿态
-	//二阶毕卡求解微分方程
+	/* 
+		二阶毕卡求解微分方程
+		q(n+1) = {(1-(\theta)^2/8)*I + 0.5*\theta}*q(n) 
+	*/
 	delta = (dt * gyro_tmp.x) * (dt * gyro_tmp.x) + (dt * gyro_tmp.y) * (dt * gyro_tmp.y) + (dt* gyro_tmp.z) * (dt * gyro_tmp.z);
 	this_quad.q0 = (1.0f - delta / 8.0f) * this_quad.q0 + qDot1 * dt;
 	this_quad.q1 = (1.0f - delta / 8.0f) * this_quad.q1 + qDot2 * dt;
@@ -296,11 +297,11 @@ void ahrs_update()
 	this_quad.q2 *= recipNorm;
 	this_quad.q3 *= recipNorm;
 	
-	//四元数到欧拉角转换,转换顺序为Z-Y-X,参见<Representing Attitude: Euler Angles, Unit Quaternions, and Rotation Vectors>.pdf一文,P24 */
+	//四元数到欧拉角转换,转换顺序为X-Y-Z,参见<Representing Attitude: Euler Angles, Unit Quaternions, and Rotation Vectors>.pdf一文,P24 */
 	Pitch = atan2(2.0f * this_quad.q2 * this_quad.q3 + 2.0f * this_quad.q0 * this_quad.q1, -2.0f * this_quad.q1 * this_quad.q1 - 2.0f * this_quad.q2 * this_quad.q2 + 1.0f) * RAD2DEG;
 	Roll = asin(2.0f * this_quad.q0 * this_quad.q2 - 2.0f * this_quad.q1 * this_quad.q3) * RAD2DEG;
 	Yaw = atan2(2.0f * this_quad.q1 * this_quad.q2 + 2.0f * this_quad.q0 * this_quad.q3, -2.0f * this_quad.q3 * this_quad.q3 - 2.0f * this_quad.q2 * this_quad.q2 + 1.0f) * RAD2DEG;
-	printf("{angle:%f,%f,%f}\r\n",Pitch,Roll,Yaw);
+//	printf("{angle:%f,%f,%f}\r\n",Pitch,Roll,Yaw);
 	ComputeRotationMatrix();
 }
 

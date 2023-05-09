@@ -41,4 +41,6 @@ balance_car\main.o: ../algorithm/pid.h
 balance_car\main.o: ../application/imu.h
 balance_car\main.o: ../algorithm/vector3.h
 balance_car\main.o: ../application/mpu6050.h
+balance_car\main.o: ../algorithm/kalman_filter.h
 balance_car\main.o: ../algorithm/ahrs.h
+balance_car\main.o: ../controller/remote_ctrl.h

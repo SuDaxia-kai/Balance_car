@@ -43,3 +43,4 @@ balance_car\tim_it.o: ../algorithm/Filter.h
 balance_car\tim_it.o: ../application/imu.h
 balance_car\tim_it.o: ../application/mpu6050.h
 balance_car\tim_it.o: ../algorithm/kalman_filter.h
+balance_car\tim_it.o: ..\controller\remote_ctrl.h

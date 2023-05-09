@@ -638,6 +638,11 @@
               <FileType>1</FileType>
               <FilePath>..\controller\tim_it.c</FilePath>
             </File>
+            <File>
+              <FileName>remote_ctrl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\controller\remote_ctrl.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -697,11 +702,6 @@
               <FileName>bsp_motor.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\boards\bsp_motor.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_imu.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\boards\bsp_imu.c</FilePath>
             </File>
           </Files>
         </Group>
